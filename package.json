@@ -1,0 +1,19 @@
+{
+  "name": "rasa-json",
+  "version": "1.0.0",
+  "description": "It watches for RASA model directory changes, copies the latest model with a specific name, and deletes the rest of the models.",
+  "homepage": "https://github.com/tajpouria/rasa-model-rotator#readme",
+  "author": "Pouria Taj <tajpouria.dev@gmail.com> (https://tajpouria.com/)",
+  "keywords": [
+    "rasa",
+    "model",
+    "rotation",
+    "replace",
+    "latest"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "throttle-debounce": "^5.0.0"
+  }
+}
