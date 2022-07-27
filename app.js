@@ -5,7 +5,8 @@ const { join } = require("path");
 
 const TARGET_DIR = process.env.TARGET_DIR || "models",
   LATEST_MODEL_PATH = process.env.LATEST_MODEL_PATH || "models/latest.tar.gz",
-  THROTTLE_DELAY_MS = process.env.THROTTLE_DELAY || 5000;
+  THROTTLE_DELAY_MS = process.env.THROTTLE_DELAY || 5000,
+  IGNORE_FILE_PATHS = process.env.IGNORE_FILE_PATHS || "models/lost+found";
 
 const throttleFunc = throttle(
   parseInt(THROTTLE_DELAY_MS, 10),
@@ -25,7 +26,11 @@ const throttleFunc = throttle(
 
       files.forEach((file) => {
         const fileDir = join(TARGET_DIR, file);
-        if (![path, LATEST_MODEL_PATH].includes(fileDir)) {
+        if (
+          ![...IGNORE_FILE_PATHS.split(","), path, LATEST_MODEL_PATH].includes(
+            fileDir
+          )
+        ) {
           console.info(`[Info]: Executing unlinkSync '${fileDir}'...`);
           unlinkSync(fileDir);
           console.info(`[Info]: Ran unlinkSync '${fileDir}'...`);
@@ -48,6 +53,6 @@ process.on("SIGTERM", () => {
 });
 
 console.info(
-  `[Info]: Loaded variables: TARGET_DIR='${TARGET_DIR}', LATEST_MODEL_PATH='${LATEST_MODEL_PATH}', THROTTLE_DELAY='${THROTTLE_DELAY_MS}'.`
+  `[Info]: Loaded variables: TARGET_DIR='${TARGET_DIR}', LATEST_MODEL_PATH='${LATEST_MODEL_PATH}', THROTTLE_DELAY='${THROTTLE_DELAY_MS}', IGNORE_FILE_PATHS='${IGNORE_FILE_PATHS}'.`
 );
 console.info("[Info]: Watching for changes...");
