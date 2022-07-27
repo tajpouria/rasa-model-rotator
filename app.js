@@ -21,7 +21,7 @@ const throttleFunc = throttle(
       );
       copyFileSync(path, LATEST_MODEL_PATH);
       console.info(
-        `[Info]: Ran copyFileSync '${path}' '${LATEST_MODEL_PATH}'...`
+        `[Info]: Ran copyFileSync '${path}' '${LATEST_MODEL_PATH}'.`
       );
 
       files.forEach((file) => {
@@ -33,7 +33,7 @@ const throttleFunc = throttle(
         ) {
           console.info(`[Info]: Executing unlinkSync '${fileDir}'...`);
           unlinkSync(fileDir);
-          console.info(`[Info]: Ran unlinkSync '${fileDir}'...`);
+          console.info(`[Info]: Ran unlinkSync '${fileDir}'.`);
         }
       });
     });
