@@ -70,4 +70,5 @@ spec:
 - `TARGET_DIR`: Model directory to watch for changes. default: "models".
 - `LATEST_MODEL_PATH`: Where to copy the latest trained model. default: "models/latest.tar.gz".
 - `THROTTLE_DELAY`: How many milliseconds to wait before copying the latest model. It's needed because Rasa writes the model gradually. default "5000".
-- `IGNORE_FILE_PATHS`: A list of `comma-separated` extra file paths that must be ignored for deletion. `LATEST_MODEL_PATH` will be ignored all the time. default: "models/lost+found".
+- `IGNORE_FILE_PATHS`: A list of `comma-separated` extra file paths that must be ignored for deletion. 
+- `LATEST_MODEL_PATH` will be ignored all the time. default: "models/lost+found".
